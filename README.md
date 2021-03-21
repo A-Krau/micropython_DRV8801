@@ -21,8 +21,11 @@ def __init__(self, dir_pin, speed_pin, bk_pin, sleep_pin, motor_sense, current_s
 Instantiate the class and pass the below arguments to run in __init__.
 
 dir_pin: GPIO pn connected to DVR8801 "DIR".
+
 speed_pin: GPIO pin connected to DVR8801 "PWM".
+
 bk_pin: GPIO pin connected to DVR8801 "Brake".
+
 sleep_pin: GPIO
 
 ## Funtion Reference
