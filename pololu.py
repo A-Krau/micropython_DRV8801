@@ -4,29 +4,39 @@ from machine import ADC
 import time
 
 class Motor_Driver:
-    def __init__(self, dir_pin, speed_pin, bk_pin, freq, duty, motor_sense, current_sense):
+    def __init__(self, dir_pin, speed_pin, bk_pin, sleep_pin, motor_sense, current_sense):
         self.dir_pin = Pin(dir_pin, Pin.OUT)
-        print(dir_pin)
         self.pwm = PWM(Pin(speed_pin))
         if bk_pin is not None:
             self.bk_pin = Pin(bk_pin. Pin.OUT)
-        self.freq = freq
-        self.duty = duty
+        if sleep_pin is not None:
+            self.sleep_pin = Pin(sleep_pin. Pin.OUT)
+            self.sleep_pin.value(1)
         self.indicator_led = Pin(25, Pin.OUT)
         self.motor_sense = ADC(Pin(motor_sense))
         self.current_sense = ADC(Pin(current_sense))
         
-    def speed(self):
-        self.pwm.freq(self.freq)
-        self.pwm.duty_u16(self.duty)
+    def speed(self, freq, duty):
+        self.pwm.freq(freq)
+        self.pwm.duty_u16(duty)
         
-    def direction(self, x):
-        self.indicator_led.value(x)
-        self.dir_pin.value(x)
+    def extend(self):
+        self.indicator_led.value(0)
+        self.dir_pin.value(0)
+        
+    def retract(self):
+        self.indicator_led.value(1)
+        self.dir_pin.value(1)
     
+    def sleep(self):
+        self.sleep_pin.value(0)
+        
+    def wake(self):
+        self.sleep_pin.value(1)
+        
     def pot_read(self):
-        travel = ((self.motor_sense.read_u16())/93617)
-        travel = round(travel, 3)
+        self.travel = ((self.motor_sense.read_u16())/93617)
+        self.travel = round(self.travel, 3)
         return (self.motor_sense.read_u16())
         
     def current_read(self):
@@ -35,3 +45,7 @@ class Motor_Driver:
         current = round(voltage/.5, 2)
         print("Amps: " + str(current))
         
+    
+        
+        
+
