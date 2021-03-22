@@ -1,6 +1,8 @@
 # micropython_pololu
 A basic library to control Pololu DRV8801 (and maybe others)
 
+https://www.pololu.com/product/2136
+
 ## Pololu DRV8801
 
 ## Class Reference
