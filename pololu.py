@@ -61,7 +61,6 @@ class Motor_Driver:
         self.travel = round(self.travel, 3)
         return (filtered_pot)
     
-        
     def current_read(self):
         voltage = self.current_sense.read_u16()
         voltage = voltage/19858
