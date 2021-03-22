@@ -40,7 +40,7 @@ indicator: Enables GPIO 25 to be used as an indicator that mirrors dir_pin.
 
 ## Funtion Reference
 
-### speed
+### speed(freq, duty)
 
 Sets the frequency and duty of the PWM signal sent to the DVR8801 PWM pin.
 
@@ -49,7 +49,7 @@ def speed(self, freq, duty):
     self.pwm.freq(freq)
     self.pwm.duty_u16(duty)
 ```
-### stop
+### stop()
 
 Sets the duty of the PWM pin to 0.
 
@@ -58,7 +58,7 @@ def stop(self):
     self.pwm.duty_u16(0)
 ```
 
-### extend
+### extend()
 
 Sets dir_pin low as well as GPIO 25.
 
@@ -68,7 +68,7 @@ def extend(self):
     self.dir_pin.value(0)
 ```
 
-### retract
+### retract()
 
 Sets dir_pin high as well as GPIO 25.
 
@@ -78,7 +78,7 @@ def retract(self):
     self.dir_pin.value(1)
 ```
 
-### brake
+### brake()
 
 Sets bk_pin high, enabling DVR8801 Brake mode.
 
@@ -87,7 +87,7 @@ def brake(self):
     self.bk_pin.value(1)
 ```
 
-### release
+### release()
 
 Sets bk_pin low, disabling DVR8801 Brake mode.
 
@@ -96,7 +96,7 @@ def brake(self):
     self.bk_pin.value(1)
 ```
 
-### sleep
+### sleep()
 
 Sets sleep_pin low, enabling DVR8801 sleep mode.
 
@@ -105,7 +105,7 @@ def sleep(self):
     self.sleep_pin.value(0)
 ```
 
-### wake
+### wake()
 
 Sets sleep_pin high, disabling DVR8801 sleep mode.
 
@@ -114,7 +114,7 @@ def wake(self):
     self.sleep_pin.value(1)
 ```
 
-### pot_read
+### pot_read()
 
 Returns poteniometer reading of current_sense.  As written code has unused `self.travel` that converts motor_sense potentiometer reading to linear distance of tested motors travel. (Ray Allen B6-7T).
 
@@ -131,7 +131,7 @@ def pot_read(self):
     return (filtered_pot)
 ```
 
-### current_read
+### current_read()
 
 Prints the current draw of motor attached to DVR8801.
 
