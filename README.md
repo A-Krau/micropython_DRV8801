@@ -95,7 +95,7 @@ def brake(self):
 
 Sets sleep_pin low, enabling DVR8801 sleep mode.
 
-```pyton
+```python
 def sleep(self):
     self.sleep_pin.value(0)
 ```
