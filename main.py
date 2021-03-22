@@ -1,4 +1,3 @@
-import json
 from machine import Pin
 from machine import PWM
 from time import sleep
